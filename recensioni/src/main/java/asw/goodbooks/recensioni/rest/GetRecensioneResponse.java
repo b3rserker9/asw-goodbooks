@@ -1,12 +1,17 @@
 package asw.goodbooks.recensioni.rest;
 
-import asw.goodbooks.recensioni.domain.Recensione; 
+import org.springframework.beans.factory.annotation.Autowired;
 
+import asw.goodbooks.recensioni.domain.Recensione;
+import asw.goodbooks.recensioni.domain.RecensioniService;
 import lombok.*; 
 
 /* Enigma, in formato breve (senza soluzione). */ 
 @Data @NoArgsConstructor
+
+
 public class GetRecensioneResponse {
+	
 
 	private Long id; 
 	private String recensore; 

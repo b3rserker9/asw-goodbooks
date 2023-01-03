@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>asw-goodbooks</name>
+	<comment>Project asw-goodbooks created by Buildship.</comment>
+	<projects>
+		<project>api-gateway</project>
+		<project>connessioni</project>
+		<project>recensioni</project>
+		<project>recensioni-seguite</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
+	</natures>
+</projectDescription>

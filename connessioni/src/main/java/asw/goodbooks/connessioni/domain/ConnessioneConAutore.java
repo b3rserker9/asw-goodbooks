@@ -15,7 +15,6 @@ public class ConnessioneConAutore {
 	private String autore; 
 	
 	public ConnessioneConAutore(String utente, String autore) {
-		this(); 
 		this.utente = utente; 
 		this.autore = autore; 
 	}
