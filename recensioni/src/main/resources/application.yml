@@ -1,6 +1,13 @@
 # application.yml
 --- 
-spring: 
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+
+
   application: 
     name: recensioni
   cloud:
@@ -17,7 +24,7 @@ spring:
         # consul deve restituire solo servizi che passano l'health check (default=false) 
         queryPassing: true 
     loadbalancer: 
-      ribbon.enabled: false 
+      ribbon.enabled: false
 
 server: 
   port: ${PORT:${SERVER_PORT:0}}
@@ -27,3 +34,5 @@ server:
 #spring.jpa.show-sql: true
 # disable OSIV
 spring.jpa.open-in-view: false
+spring.jpa.hibernate.ddl-auto: create
+
