@@ -1,0 +1,38 @@
+version: '3.1'
+services:
+  consul:
+    image: consul
+  recensioni-seguite:
+    build: ./recensioni-seguite
+    depends_on:
+      - "consul"
+  connessioni:
+    build : ./connessioni
+    depends_on:
+      - "connessioni_db"
+  recensioni:
+    build : ./recensioni
+    depends_on:
+      - "recensione_db"
+  connessioni_db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=connessioni
+  recensione_db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=recensioni
+  api-gateway:
+    build : ./api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "consul"
