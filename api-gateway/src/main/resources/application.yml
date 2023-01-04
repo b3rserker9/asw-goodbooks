@@ -47,8 +47,8 @@ spring:
         - StripPrefix=1
     
 server: 
-#  port: ${PORT:${SERVER_PORT:0}}
-  port: 8080
+  port: ${PORT:${SERVER_PORT:0}}
+  #port: 8080
 
 management: 
   endpoint.gateway.enabled: true 
