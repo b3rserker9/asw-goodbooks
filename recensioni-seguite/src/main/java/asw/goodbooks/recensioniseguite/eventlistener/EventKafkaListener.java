@@ -3,6 +3,8 @@ package asw.goodbooks.recensioniseguite.eventlistener;
 import asw.goodbooks.common.api.event.DomainEvent;
 import asw.goodbooks.recensioniseguite.domain.EventConsumer;
 import asw.goodbooks.recensioni.api.event.RecensioniServiceEventChannel;
+import asw.goodbooks.connessioni.api.event.ConnessioneConAutoreEventChannel;
+import asw.goodbooks.connessioni.api.event.ConnessioneConRecensoreEventChannel;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -17,7 +19,7 @@ public class EventKafkaListener {
     @Autowired
     private EventConsumer eventConsumer;
 
-    @KafkaListener(topics = RecensioniServiceEventChannel.channel)
+    @KafkaListener(topics = { RecensioniServiceEventChannel.channel, ConnessioneConAutoreEventChannel.channel, ConnessioneConRecensoreEventChannel.channel})
     public void listen(ConsumerRecord<String, DomainEvent> record) throws Exception {
         logger.info("EVENT LISTENER: " + record.toString());
         DomainEvent event = record.value();

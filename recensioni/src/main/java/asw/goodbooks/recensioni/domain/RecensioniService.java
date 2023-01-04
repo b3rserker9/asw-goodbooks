@@ -18,6 +18,7 @@ public class RecensioniService {
 	@Autowired
 	private RecensioniEventPublisher recensioniEventPublisher;
 
+
  	public Recensione createRecensione(String recensore, String titoloLibro, String autoreLibro, String testoRecensione) {
 		Recensione recensione = new Recensione(recensore, titoloLibro, autoreLibro, testoRecensione); 
 		recensione = recensioniRepository.save(recensione);

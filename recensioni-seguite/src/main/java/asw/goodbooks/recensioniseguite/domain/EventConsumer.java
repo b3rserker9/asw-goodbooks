@@ -1,6 +1,8 @@
 package asw.goodbooks.recensioniseguite.domain;
 
 import asw.goodbooks.common.api.event.DomainEvent;
+import asw.goodbooks.connessioni.api.event.ConnessioneConAutoreCreatedEvent;
+import asw.goodbooks.connessioni.api.event.ConnessioneConRecensoreCreatedEvent;
 import asw.goodbooks.recensioni.api.event.RecensioneCreatedEvent;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,16 @@ public class EventConsumer {
         if (event.getClass().equals(RecensioneCreatedEvent.class)) {
             RecensioneCreatedEvent rce = (RecensioneCreatedEvent) event;
             onRecensioneCreated(rce);
-        } else {
+        }
+        else if(event.getClass().equals(ConnessioneConAutoreCreatedEvent.class)){
+            ConnessioneConAutoreCreatedEvent cna = (ConnessioneConAutoreCreatedEvent) event;
+            onConnessioneConAutorerCreated(cna);
+        }
+        else if(event.getClass().equals(ConnessioneConRecensoreCreatedEvent.class)){
+            ConnessioneConRecensoreCreatedEvent cnr = (ConnessioneConRecensoreCreatedEvent) event;
+            onConnessioneConRecensoreCreated(cnr);
+        }
+        else {
             logger.info("UNKNOWN EVENT: " + event);
         }
     }
@@ -23,6 +34,16 @@ public class EventConsumer {
     private void onRecensioneCreated(RecensioneCreatedEvent event) {
         Recensione recensione = new Recensione(event.getRecensore(), event.getTitoloLibro(), event.getAutoreLibro(), event.getTestoRecensione());
         logger.info("Okay funziona tutto okay recensioni ricevuta da evento: " + recensione);
+    }
+
+    private void onConnessioneConAutorerCreated(ConnessioneConAutoreCreatedEvent event) {
+        ConnessioneConAutore connessioneConAutore = new ConnessioneConAutore(event.getUtente(),event.getAutore());
+        logger.info("Okay funziona anche connessione con autore: " + connessioneConAutore);
+    }
+
+    private void onConnessioneConRecensoreCreated(ConnessioneConRecensoreCreatedEvent event) {
+        ConnessioneConRecensore connessioneConRecensore = new ConnessioneConRecensore(event.getUtente(),event.getRecensore());
+        logger.info("Okay funziona anche connessione con recensore: " + connessioneConRecensore);
     }
 
 }
