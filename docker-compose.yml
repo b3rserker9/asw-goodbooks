@@ -1,16 +1,9 @@
 version: '3.1'
 services:
-
-  recensioni-seguite:
-    build: ./recensioni-seguite
-  connessioni:
-    build : ./connessioni
-    depends_on:
-      - "connessioni_db"
-  recensioni:
-    build : ./recensioni
-    depends_on:
-      - "recensione_db"
+  consul:
+    image: consul
+    ports:
+      - "8500:8500"
   connessioni_db:
     image: postgres
     ports:
@@ -27,7 +20,25 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=recensioni
-  api-gateway:
-    build : ./api-gateway
+   zookeeper:
+    image: bitnami/zookeeper:latest
     ports:
-      - "8080:8080"
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: bitnami/kafka:latest
+    depends_on:
+      - "zookeeper"
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_BROKER_ID=1
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+#      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://10.11.121:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+#     - KAFKA_CREATE_TOPICS: "restaurant-service-event-channel:4:1,restaurant-service-command-channel:4:1"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
