@@ -24,8 +24,11 @@ echo Starting recensioni db in docker container
 docker run  --name recensioni -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 
 
-echo Starting Consul in a Docker Container
+echo Starting recensioni-seguite db in docker container
 
-docker run -d --hostname localhost --name asw-consul --publish 8500:8500 consul
+docker run  --name recensioni-seguite -p 5434:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+
+
+
 
 

@@ -28,6 +28,7 @@ dependencies {
 
 
 	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.postgresql:postgresql'
 
     compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

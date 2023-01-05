@@ -4,6 +4,7 @@ import asw.goodbooks.common.api.event.DomainEvent;
 import asw.goodbooks.connessioni.api.event.ConnessioneConAutoreCreatedEvent;
 import asw.goodbooks.connessioni.api.event.ConnessioneConRecensoreCreatedEvent;
 import asw.goodbooks.recensioni.api.event.RecensioneCreatedEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
@@ -11,6 +12,8 @@ import java.util.logging.Logger;
 @Service
 public class EventConsumer {
 
+    @Autowired
+    private RecensioniSeguiteService recensioniSeguiteService;
     private final Logger logger = Logger.getLogger(this.getClass().toString());
 
     public void onEvent(DomainEvent event) {
@@ -32,18 +35,18 @@ public class EventConsumer {
     }
 
     private void onRecensioneCreated(RecensioneCreatedEvent event) {
-        Recensione recensione = new Recensione(event.getRecensore(), event.getTitoloLibro(), event.getAutoreLibro(), event.getTestoRecensione());
-        logger.info("Okay funziona tutto okay recensioni ricevuta da evento: " + recensione);
+        Recensione recensione = this.recensioniSeguiteService.addRecensione(event.getRecensore(), event.getTitoloLibro(), event.getAutoreLibro(), event.getTestoRecensione());
+        logger.info("Recensione ricevuta da evento e salvata nel db " + recensione);
     }
 
     private void onConnessioneConAutoreCreated(ConnessioneConAutoreCreatedEvent event) {
-        ConnessioneConAutore connessioneConAutore = new ConnessioneConAutore(event.getUtente(),event.getAutore());
-        logger.info("Okay funziona anche connessione con autore: " + connessioneConAutore);
+        ConnessioneConAutore connessioneConAutore = this.recensioniSeguiteService.addConnessioneConAutore(event.getUtente(), event.getAutore());
+        logger.info("Connessione con autore ricevuta da evento e salvata nel db " + connessioneConAutore);
     }
 
     private void onConnessioneConRecensoreCreated(ConnessioneConRecensoreCreatedEvent event) {
-        ConnessioneConRecensore connessioneConRecensore = new ConnessioneConRecensore(event.getUtente(),event.getRecensore());
-        logger.info("Okay funziona anche connessione con recensore: " + connessioneConRecensore);
+        ConnessioneConRecensore connessioneConRecensore = this.recensioniSeguiteService.addConnessioneConRecensore(event.getUtente(), event.getRecensore());
+        logger.info("Connessione con recensore ricevuta da evento e salvata nel db " + connessioneConRecensore);
     }
 
 }

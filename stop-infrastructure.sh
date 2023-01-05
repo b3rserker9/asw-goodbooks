@@ -10,11 +10,6 @@ docker compose down -v
 #pkill -f 'java'
 
 
-echo Halting Consul
-
-docker stop asw-consul
-docker rm asw-consul
-
 echo Stop connessioni db
 
 docker stop connessioni
@@ -26,6 +21,10 @@ echo Stop recensioni db
 docker stop recensioni
 docker rm recensioni
 
+echo Stop recensioni-seguite db
+
+docker stop recensioni-seguite
+docker rm recensioni-seguite
 
 
 
