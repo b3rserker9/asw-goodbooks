@@ -20,15 +20,14 @@ public class ConnessioniService {
 	private ConnessioniConRecensoriRepository connessioniConRecensoriRepository;
 
 	@Autowired
-	private ConnessioniEventPublisher connessioniRecensoreEventPublisher;
-//	@Autowired
-	//private ConnessioniEventPublisher connessioniAutoreEventPublisher;
+	private ConnessioniEventPublisher connessioniEventPublisher;
+
 
  	public ConnessioneConAutore createConnessioneConAutore(String utente, String autore) {
 		ConnessioneConAutore connessione = new ConnessioneConAutore(utente, autore); 
 		connessione = connessioniConAutoriRepository.save(connessione);
 		DomainEvent domainEvent = new ConnessioneConAutoreCreatedEvent(connessione.getUtente(), connessione.getAutore());
-		//connessioniAutoreEventPublisher.publish(domainEvent);
+		connessioniEventPublisher.publish(domainEvent);
 		return connessione;
 	}
 
@@ -51,7 +50,7 @@ public class ConnessioniService {
 		ConnessioneConRecensore connessione = new ConnessioneConRecensore(utente, recensore); 
 		connessione = connessioniConRecensoriRepository.save(connessione);
 		DomainEvent domainEvent = new ConnessioneConRecensoreCreatedEvent(connessione.getUtente(), connessione.getRecensore());
-		connessioniRecensoreEventPublisher.publish(domainEvent);
+		connessioniEventPublisher.publish(domainEvent);
 		return connessione;
 	}
 

@@ -20,7 +20,7 @@ public class EventConsumer {
         }
         else if(event.getClass().equals(ConnessioneConAutoreCreatedEvent.class)){
             ConnessioneConAutoreCreatedEvent cna = (ConnessioneConAutoreCreatedEvent) event;
-            onConnessioneConAutorerCreated(cna);
+            onConnessioneConAutoreCreated(cna);
         }
         else if(event.getClass().equals(ConnessioneConRecensoreCreatedEvent.class)){
             ConnessioneConRecensoreCreatedEvent cnr = (ConnessioneConRecensoreCreatedEvent) event;
@@ -36,7 +36,7 @@ public class EventConsumer {
         logger.info("Okay funziona tutto okay recensioni ricevuta da evento: " + recensione);
     }
 
-    private void onConnessioneConAutorerCreated(ConnessioneConAutoreCreatedEvent event) {
+    private void onConnessioneConAutoreCreated(ConnessioneConAutoreCreatedEvent event) {
         ConnessioneConAutore connessioneConAutore = new ConnessioneConAutore(event.getUtente(),event.getAutore());
         logger.info("Okay funziona anche connessione con autore: " + connessioneConAutore);
     }

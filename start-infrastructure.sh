@@ -11,30 +11,21 @@ echo Creating Kafka topic for the recensioni service...
 KAFKA_DOCKER=$(docker ps | grep kafka | grep -v zookeeper | awk '{print $1}')
 
 docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 --create --topic recensioni-service-event-channel --replication-factor 1 --partitions 4
-docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 --create --topic connessione-autore-event-channel --replication-factor 1 --partitions 4
-docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 --create --topic connessione-recensore-event-channel --replication-factor 1 --partitions 4
+docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 --create --topic connessione-event-channel --replication-factor 1 --partitions 4
 
 
-#echo Starting connessioni db in docker container
+echo Starting connessioni db in docker container
 
-#docker run  --name connessioni -p 5433:5432 -e POSTGRES_PASSWORD=postgres -d postgres
-
-
-#echo Starting recensioni db in docker container
-
-#docker run  --name recensioni -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+docker run  --name connessioni -p 5433:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 
 
-#echo Starting Consul in a Docker Container
+echo Starting recensioni db in docker container
 
-#docker run -d --hostname localhost --name asw-consul --publish 8500:8500 consul
+docker run  --name recensioni -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 
-#echo Running GOODBOOKS
 
-# Consul deve essere avviato separatamente
+echo Starting Consul in a Docker Container
 
-#java -Xms64m -Xmx128m -jar recensioni/build/libs/recensioni.jar &
-#java -Xms64m -Xmx128m -jar connessioni/build/libs/connessioni.jar &
-#java -Xms64m -Xmx128m -jar recensioni-seguite/build/libs/recensioni-seguite.jar &
+docker run -d --hostname localhost --name asw-consul --publish 8500:8500 consul
 
-#java -Xms64m -Xmx128m -jar api-gateway/build/libs/api-gateway.jar &
+

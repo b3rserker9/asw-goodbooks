@@ -1,7 +1,7 @@
 package asw.goodbooks.connessioni.eventPublisher;
 
 import asw.goodbooks.common.api.event.DomainEvent;
-import asw.goodbooks.connessioni.api.event.ConnessioneConAutoreEventChannel;
+import asw.goodbooks.connessioni.api.event.ConnessioneEventChannel;
 import asw.goodbooks.connessioni.domain.ConnessioniEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 import java.util.logging.Logger;
 
 @Component
-public class ConnessioneAutoreEventKafkaPublisher implements ConnessioniEventPublisher {
+public class ConnessioneEventKafkaPublisher implements ConnessioniEventPublisher {
 
     private final Logger logger = Logger.getLogger(this.getClass().toString());
     @Autowired
     private KafkaTemplate<String, DomainEvent> template;
 
-    private String channel = ConnessioneConAutoreEventChannel.channel;
+    private String channel = ConnessioneEventChannel.channel;
 
     @Override
     public void publish(DomainEvent event) {
