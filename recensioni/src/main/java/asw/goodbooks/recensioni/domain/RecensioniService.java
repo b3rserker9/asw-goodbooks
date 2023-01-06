@@ -1,7 +1,8 @@
 package asw.goodbooks.recensioni.domain;
 
 import asw.goodbooks.recensioni.event.DomainEvent;
-import asw.goodbooks.recensioni.event.RecensioniCreatedEvent;
+import asw.goodbooks.recensioni.api.event.RecensioniCreatedEvent;
+import asw.goodbooks.recensioni.eventpublisher.RecensioniEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,4 +1,4 @@
-package asw.goodbooks.recensioni.domain;
+package asw.goodbooks.recensioni.eventpublisher;
 
 import asw.goodbooks.recensioni.event.DomainEvent;
 

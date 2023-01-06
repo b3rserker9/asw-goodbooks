@@ -1,4 +1,4 @@
-package asw.goodbooks.recensioni.event;
+package asw.goodbooks.recensioni.api.event;
 
 import asw.goodbooks.recensioni.event.DomainEvent;
 import lombok.AllArgsConstructor;

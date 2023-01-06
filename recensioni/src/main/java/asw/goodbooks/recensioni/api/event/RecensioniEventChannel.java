@@ -1,4 +1,4 @@
-package asw.goodbooks.recensioni.event;
+package asw.goodbooks.recensioni.api.event;
 
 public class RecensioniEventChannel {
 
