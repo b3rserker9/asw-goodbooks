@@ -1,7 +1,9 @@
 package asw.goodbooks.recensioni.eventpublisher;
 
-import asw.goodbooks.recensioni.event.DomainEvent;
+import asw.goodbooks.common.api.event.DomainEvent;
+
 import asw.goodbooks.recensioni.api.event.RecensioniEventChannel;
+import asw.goodbooks.recensioni.domain.RecensioniEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;

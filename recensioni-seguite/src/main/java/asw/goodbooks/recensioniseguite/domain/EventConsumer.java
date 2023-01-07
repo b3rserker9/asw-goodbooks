@@ -1,6 +1,7 @@
 package asw.goodbooks.recensioniseguite.domain;
 
-import asw.goodbooks.connessioni.api.event.DomainEvent;
+
+import asw.goodbooks.common.api.event.DomainEvent;
 import asw.goodbooks.connessioni.api.event.ConnessioneConAutoreCreatedEvent;
 import asw.goodbooks.connessioni.api.event.ConnessioneConRecensoreCreatedEvent;
 import asw.goodbooks.recensioni.api.event.RecensioniCreatedEvent;

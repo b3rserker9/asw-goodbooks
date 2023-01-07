@@ -1,7 +1,8 @@
 package asw.goodbooks.connessioni.eventpublisher;
 
+import asw.goodbooks.common.api.event.DomainEvent;
 import asw.goodbooks.connessioni.api.event.ConnessioniEventChannel;
-import asw.goodbooks.connessioni.api.event.DomainEvent;
+import asw.goodbooks.connessioni.domain.ConnessioniEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.logging.Logger;
 
 @Component
-public class ConnessioniEventKafkaPublisher implements ConnessioniEventPublisher{
+public class ConnessioniEventKafkaPublisher implements ConnessioniEventPublisher {
 
     private final Logger logger = Logger.getLogger(this.getClass().toString());
 

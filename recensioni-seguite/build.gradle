@@ -25,6 +25,9 @@ dependencies {
 	implementation 'org.hsqldb:hsqldb'
     implementation project(path: ':connessioni')
 	implementation project(path: ':recensioni')
+    implementation project(path: ':goodbooks-common-api-event')
+	implementation project(path: ':recensioni-api-event')
+	implementation project(path: ':connessioni-api-event')
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'com.h2database:h2'
 

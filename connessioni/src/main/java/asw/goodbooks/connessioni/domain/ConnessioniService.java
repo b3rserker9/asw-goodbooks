@@ -1,9 +1,9 @@
 package asw.goodbooks.connessioni.domain;
 
+
+import asw.goodbooks.common.api.event.DomainEvent;
 import asw.goodbooks.connessioni.api.event.ConnessioneConAutoreCreatedEvent;
 import asw.goodbooks.connessioni.api.event.ConnessioneConRecensoreCreatedEvent;
-import asw.goodbooks.connessioni.api.event.DomainEvent;
-import asw.goodbooks.connessioni.eventpublisher.ConnessioniEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
