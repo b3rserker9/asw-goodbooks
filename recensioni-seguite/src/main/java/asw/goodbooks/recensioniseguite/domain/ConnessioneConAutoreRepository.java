@@ -11,4 +11,8 @@ public interface ConnessioneConAutoreRepository extends CrudRepository<Connessio
 
     public Collection<String> findAutoreByUtente(String utente);
 
+    @Query("SELECT r.utente FROM ConnessioneConAutore r WHERE r.autore = ?1")
+
+    public Collection<String> findUtenteByAutore(String autore);
+
 }

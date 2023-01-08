@@ -74,4 +74,9 @@ public class RecensioniSeguiteService {
 		return connessione;
 	}
 
+	public Collection<String> getUtentiFromAutore(String autore){
+		Collection<String> utenti = connessioneConAutoreRepository.findUtenteByAutore(autore);
+		return utenti;
+	}
+
 }
