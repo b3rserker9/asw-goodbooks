@@ -28,13 +28,16 @@ public class RecensioniSeguiteService {
 	@Autowired
 	private ConnessioneConRecensoreRepository connessioneConRecensoreRepository;
 
+	@Autowired
+	private RecensioniSeguiteRepository recensioniSeguiteRepository;
+
 	/* Trova le recensioni seguite da un utente. */
 	/* ovvero le recensioni dei recensori e degli autori di libri seguiti da quell’utente  */
 
 	public Collection<Recensione> getRecensioniSeguite(String utente) {
-		Collection<Recensione> recensioniSeguite = new TreeSet<>(); 
+		Collection<Recensione> recensioniSeguite = new ArrayList<>();
 		
-		Collection<String> autoriSeguiti = this.connessioneConAutoreRepository.findAutoreByUtente(utente);
+		/*Collection<String> autoriSeguiti = this.connessioneConAutoreRepository.findAutoreByUtente(utente);
 		if (autoriSeguiti.size()>0) {
 			for (String r : autoriSeguiti) {
 				Collection<Recensione> recensioniDiAutori = new TreeSet<>();
@@ -50,7 +53,8 @@ public class RecensioniSeguiteService {
 				recensioniDiRecensori =	this.recensioneRepository.findByRecensore(r);
 				recensioniSeguite.addAll(recensioniDiRecensori);
 			}
-		}
+		}*/
+		recensioniSeguite = (ArrayList) recensioniSeguiteRepository.findByRecensioniSeguiteId_Utente(utente);
 
 
 		return recensioniSeguite; 
@@ -77,6 +81,18 @@ public class RecensioniSeguiteService {
 	public Collection<String> getUtentiFromAutore(String autore){
 		Collection<String> utenti = connessioneConAutoreRepository.findUtenteByAutore(autore);
 		return utenti;
+	}
+
+	public Collection<String> getUtentiFromRecensore(String autore){
+		Collection<String> utenti = connessioneConRecensoreRepository.findUtenteByRecensore(autore);
+		return utenti;
+	}
+
+	public RecensioniSeguite addRecensioniSeguite(String utente, Long idRecensione, String recensore, String titoloLibro, String autoreLibro, String testoRecensione){
+		RecensioniSeguiteId recensioniSeguiteId = new RecensioniSeguiteId(utente, idRecensione);
+		RecensioniSeguite recensioniSeguite = new RecensioniSeguite(recensioniSeguiteId, recensore, titoloLibro, autoreLibro, testoRecensione);
+		recensioniSeguite = recensioniSeguiteRepository.save(recensioniSeguite);
+		return recensioniSeguite;
 	}
 
 }

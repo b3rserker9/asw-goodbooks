@@ -12,11 +12,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RecensioniSeguite implements Serializable {
-    @Id
-    private String utente;
-
-   @Id
-    private Long idRecensione;
+   @EmbeddedId
+   private RecensioniSeguiteId recensioniSeguiteId;
 
     private String recensore;
 
