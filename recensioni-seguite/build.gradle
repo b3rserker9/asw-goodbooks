@@ -1,6 +1,6 @@
 plugins {
-	id 'org.springframework.boot' 
-	id 'io.spring.dependency-management' 
+	id 'org.springframework.boot'
+	id 'io.spring.dependency-management'
 }
 
 dependencyManagement {
@@ -15,13 +15,15 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
-	implementation 'org.springframework.boot:spring-boot-starter-webflux' 
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 //	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j'
 //	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.postgresql:postgresql'
 	implementation 'org.hsqldb:hsqldb'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
     implementation project(path: ':goodbooks-common-api-event')
 	implementation project(path: ':recensioni-api-event')
 	implementation project(path: ':connessioni-api-event')

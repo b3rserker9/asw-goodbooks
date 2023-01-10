@@ -22,8 +22,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.postgresql:postgresql'
-    implementation project(path: ':goodbooks-common-api-event')
-	implementation project(path: ':goodbooks-common-api-event')
+    implementation project(":goodbooks-common-api-event")
     implementation project(path: ':connessioni-api-event')
 
     compileOnly 'org.projectlombok:lombok'

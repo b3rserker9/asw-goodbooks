@@ -47,7 +47,7 @@ spring:
         - StripPrefix=1
     
 server: 
-#  port: ${PORT:${SERVER_PORT:0}}
+  #port: ${PORT:${SERVER_PORT:0}}
   port: 8080
 
 management: 

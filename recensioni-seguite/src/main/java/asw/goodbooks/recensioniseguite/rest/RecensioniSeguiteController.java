@@ -30,10 +30,10 @@ public class RecensioniSeguiteController {
 
 	/* Trova le recensioni (in formato breve) degli utenti seguiti da utente. */ 
 	@GetMapping("/recensioniseguite/{utente}")
-	public Collection<Recensione> getRecensioniSeguite(@PathVariable String utente) {
+	public Collection<RecensioniSeguite> getRecensioniSeguite(@PathVariable String utente) {
 		Instant start = Instant.now();
 		logger.info("REST CALL: getRecensioniSeguite " + utente); 
-		Collection<Recensione> recensioni = recensioniSeguiteService.getRecensioniSeguite(utente); 
+		Collection<RecensioniSeguite> recensioni = recensioniSeguiteService.getRecensioniSeguite(utente);
 		Duration duration = Duration.between(start, Instant.now()); 
 		logger.info("getRecensioniSeguite " + utente + " (trovate " + recensioni.size() + " recensioni in " + duration.toMillis() + " ms): " + recensioni);
 		return recensioni; 

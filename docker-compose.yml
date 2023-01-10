@@ -4,23 +4,9 @@ services:
     image: consul
     ports:
       - "8500:8500"
-  connessioni_db:
-    image: postgres
-    ports:
-      - "5431:5432"
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=connessioni
-  recensione_db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=recensioni
-   zookeeper:
+
+
+  zookeeper:
     image: bitnami/zookeeper:latest
     ports:
       - "2181:2181"

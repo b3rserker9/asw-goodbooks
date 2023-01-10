@@ -37,6 +37,7 @@ public class RecensioniController {
 		String testoRecensione = request.getTestoRecensione();
 		logger.info("REST CALL: createRecensione " + recensore + ", " + titoloLibro + ", " + autoreLibro + ", " + testoRecensione); 
 		Recensione recensione = recensioniService.createRecensione(recensore, titoloLibro, autoreLibro, testoRecensione);
+		
 		return recensione; 
 	}	
 
