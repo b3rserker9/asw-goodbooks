@@ -36,27 +36,7 @@ public class RecensioniSeguiteService {
 
 	public Collection<Recensione> getRecensioniSeguite(String utente) {
 		Collection<Recensione> recensioniSeguite = new ArrayList<>();
-		
-		/*Collection<String> autoriSeguiti = this.connessioneConAutoreRepository.findAutoreByUtente(utente);
-		if (autoriSeguiti.size()>0) {
-			for (String r : autoriSeguiti) {
-				Collection<Recensione> recensioniDiAutori = new TreeSet<>();
-				recensioniDiAutori = this.recensioneRepository.findByAutoreLibro(r);
-				recensioniSeguite.addAll(recensioniDiAutori);
-			}
-		}
-		
-		Collection<String> recensoriSeguiti = this.connessioneConRecensoreRepository.findRecensoriByUtente(utente);
-		if (recensoriSeguiti.size()>0) {
-			for(String r:recensoriSeguiti){
-				Collection<Recensione> recensioniDiRecensori = new TreeSet<>();
-				recensioniDiRecensori =	this.recensioneRepository.findByRecensore(r);
-				recensioniSeguite.addAll(recensioniDiRecensori);
-			}
-		}*/
 		recensioniSeguite = (ArrayList) recensioniSeguiteRepository.findByRecensioniSeguiteId_Utente(utente);
-
-
 		return recensioniSeguite; 
 	}
 
@@ -93,6 +73,16 @@ public class RecensioniSeguiteService {
 		RecensioniSeguite recensioniSeguite = new RecensioniSeguite(recensioniSeguiteId, recensore, titoloLibro, autoreLibro, testoRecensione);
 		recensioniSeguite = recensioniSeguiteRepository.save(recensioniSeguite);
 		return recensioniSeguite;
+	}
+
+	public Collection<Recensione> getRecensioniByAutore(String autore){
+		Collection<Recensione> recensione = recensioneRepository.findByAutoreLibro(autore);
+		return recensione;
+	}
+
+	public Collection<Recensione> getRecensioniByRecensore(String recensore){
+		Collection<Recensione> recensione = recensioneRepository.findByRecensore(recensore);
+		return recensione;
 	}
 
 }

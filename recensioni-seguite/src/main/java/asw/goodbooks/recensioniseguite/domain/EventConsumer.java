@@ -50,11 +50,26 @@ public class EventConsumer {
     private void onConnessioneConAutoreCreated(ConnessioneConAutoreCreatedEvent event) {
         ConnessioneConAutore connessioneConAutore = this.recensioniSeguiteService.addConnessioneConAutore(event.getUtente(), event.getAutore());
         logger.info("Connessione con autore ricevuta da evento e salvata nel db " + connessioneConAutore);
+        //Creata una nuova connessione, devo aggiornare e anche la tabella recensioniseguite.
+        //Ciò significa che devo poi trovare tutte le recensioni associate a quell'autore e creare una recensioneseguita
+        //con l'utente nuovo della connessione
+        Collection<Recensione> recensioni = this.recensioniSeguiteService.getRecensioniByAutore(connessioneConAutore.getAutore());
+        for(Recensione r : recensioni){
+            this.recensioniSeguiteService.addRecensioniSeguite(connessioneConAutore.getUtente(), r.getId(), r.getRecensore(), r.getTitoloLibro(), r.getAutoreLibro(), r.getTestoRecensione());
+        }
     }
 
     private void onConnessioneConRecensoreCreated(ConnessioneConRecensoreCreatedEvent event) {
         ConnessioneConRecensore connessioneConRecensore = this.recensioniSeguiteService.addConnessioneConRecensore(event.getUtente(), event.getRecensore());
         logger.info("Connessione con recensore ricevuta da evento e salvata nel db " + connessioneConRecensore);
+        //Creata una nuova connessione, devo aggiornare e anche la tabella recensioniseguite.
+        //Ciò significa che devo poi trovare tutte le recensioni associate a quel recensore e creare una recensioneseguita
+        //con l'utente nuovo della connessione
+        Collection<Recensione> recensioni = this.recensioniSeguiteService.getRecensioniByRecensore(connessioneConRecensore.getRecensore());
+        for(Recensione r : recensioni){
+            this.recensioniSeguiteService.addRecensioniSeguite(connessioneConRecensore.getUtente(), r.getId(), r.getRecensore(), r.getTitoloLibro(), r.getAutoreLibro(), r.getTestoRecensione());
+        }
+
     }
 
 }
