@@ -3,7 +3,7 @@
 #######################################################
 
 # FROM openjdk:17-jdk 
-FROM eclipse-temurin:17-jdk 
+FROM eclipse-temurin:17-jdk
 
 ADD build/libs/recensioni-seguite.jar recensioni-seguite.jar
 

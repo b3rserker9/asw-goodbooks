@@ -1,9 +1,87 @@
 version: '3.1'
 services:
   consul:
-    image: consul
+    restart: on-failure
+    image: consul:latest
     ports:
       - "8500:8500"
+
+  api-gateway:
+    build: ./api-gateway
+    depends_on:
+      - consul
+      - kafka
+    ports:
+      - "8080:8080"
+
+  connessioni:
+    build: ./connessioni
+    depends_on:
+      - connessioni_db
+      - kafka
+      - consul
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://connessioni_db:5432/connessioni
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  recensioni:
+    build: ./recensioni
+    depends_on:
+      - recensione_db
+      - kafka
+      - consul
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://recensione_db:5432/recensioni
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  recensioni-seguite:
+    build:
+      context: ./recensioni-seguite
+      dockerfile: Dockerfile
+    depends_on:
+      - recensioneseguitedb
+      - consul
+      - kafka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://recensioneseguitedb:5432/recensioniseguite
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  recensioneseguitedb:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=recensioniseguite
+
+
+  connessioni_db:
+    image: postgres
+    ports:
+      - "5431:5432"
+    volumes:
+      - "./connessioni_data:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=connessioni
+
+  recensione_db:
+    image: postgres
+    ports:
+      - "5430:5432"
+
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=recensioni
 
 
   zookeeper:
@@ -28,3 +106,11 @@ services:
 #     - KAFKA_CREATE_TOPICS: "restaurant-service-event-channel:4:1,restaurant-service-command-channel:4:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
+  pgadmin-data:
+    driver: local
