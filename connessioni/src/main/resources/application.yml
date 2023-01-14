@@ -1,15 +1,11 @@
 # application.yml
 ---
 spring:
-  datasource:
-    platform: postgres
-    url: jdbc:postgresql://connessioni_db:5432/connessioni
-    username: postgres
-    password: postgres
   application: 
     name: connessioni
   cloud:
     consul:
+      #host: localhost
       host: consul
       port: 8500
       discovery: 
@@ -23,7 +19,11 @@ spring:
         queryPassing: true 
     loadbalancer: 
       ribbon.enabled: false 
-
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://connessioni_db:5432/connessioni
+    username: postgres
+    password: postgres
 server: 
  # port: ${PORT:${SERVER_PORT:0}}
  port: 8080

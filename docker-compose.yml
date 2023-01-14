@@ -1,5 +1,10 @@
 version: '3'
 services:
+  consul:
+    image: consul
+    ports:
+      - "8500:8500"
+
   zookeeper:
     image: bitnami/zookeeper:latest
     ports:
@@ -22,12 +27,7 @@ services:
 #     - KAFKA_CREATE_TOPICS: "restaurant-service-event-channel:4:1,restaurant-service-command-channel:4:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  consul:
-    image: consul:latest
-    container_name: consul
-    hostname: consul
-    ports:
-      - "8500:8500"
+
 
   recensioni:
     build: ./recensioni
@@ -35,6 +35,7 @@ services:
       - "recensione_db"
       - "kafka"
       - "consul"
+
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://recensione_db:5432/recensioni
       - SPRING_DATASOURCE_USERNAME=postgres
@@ -47,6 +48,7 @@ services:
       - "connessioni_db"
       - "kafka"
       - "consul"
+
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://connessioni_db:5432/connessioni
       - SPRING_DATASOURCE_USERNAME=postgres
@@ -61,6 +63,7 @@ services:
       - "recensioneseguitedb"
       - "kafka"
       - "consul"
+
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://recensioneseguitedb:5432/recensioniseguite
       - SPRING_DATASOURCE_USERNAME=postgres
