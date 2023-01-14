@@ -16,9 +16,90 @@ services:
       - KAFKA_BROKER_ID=1
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
 #      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://10.11.121:9092
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
 #     - KAFKA_CREATE_TOPICS: "restaurant-service-event-channel:4:1,restaurant-service-command-channel:4:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+  consul:
+    image: consul:latest
+    container_name: consul
+    hostname: consul
+    ports:
+      - "8500:8500"
+
+  recensioni:
+    build: ./recensioni
+    depends_on:
+      - "recensione_db"
+      - "kafka"
+      - "consul"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://recensione_db:5432/recensioni
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  connessioni:
+    build: ./connessioni
+    depends_on:
+      - "connessioni_db"
+      - "kafka"
+      - "consul"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://connessioni_db:5432/connessioni
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  recensioni-seguite:
+    build:
+      context: ./recensioni-seguite
+      dockerfile: Dockerfile
+    depends_on:
+      - "recensioneseguitedb"
+      - "kafka"
+      - "consul"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://recensioneseguitedb:5432/recensioniseguite
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  api-gateway:
+    build: ./api-gateway
+    depends_on:
+      - "kafka"
+      - "consul"
+    ports:
+      - "8080:8080"
+
+  recensioneseguitedb:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=recensioniseguite
+
+  connessioni_db:
+    image: postgres
+    ports:
+      - "5431:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=connessioni
+
+  recensione_db:
+    image: postgres
+    ports:
+      - "5430:5432"
+
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=recensioni
+
