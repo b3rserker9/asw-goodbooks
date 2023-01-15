@@ -26,6 +26,12 @@ spring:
         queryPassing: true 
     loadbalancer: 
       ribbon.enabled: false
+    kafka:
+      bootstrap-servers: kafka:9092
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 
 server:
   port: ${PORT:${SERVER_PORT:0}}
@@ -38,7 +44,7 @@ spring.jpa.open-in-view: false
 
 
 # KAFKA
-spring.kafka.bootstrap-servers : ${DOCKER_HOST_IP:localhost}:9092
+spring.kafka.bootstrap-servers : kafka:9092
 
 # KAFKA CONSUMER
 spring.kafka.consumer.group-id: ${spring.application.name}
