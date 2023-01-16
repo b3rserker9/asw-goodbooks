@@ -33,8 +33,9 @@ services:
     build: ./recensioni
     depends_on:
       - "recensione_db"
-      - "kafka"
       - "consul"
+      - "kafka"
+
 
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://recensione_db:5432/recensioni
@@ -46,8 +47,8 @@ services:
     build: ./connessioni
     depends_on:
       - "connessioni_db"
-      - "kafka"
       - "consul"
+      -  "kafka"
 
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://connessioni_db:5432/connessioni
@@ -61,8 +62,9 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - "recensioneseguitedb"
-      - "kafka"
       - "consul"
+      - "kafka"
+
 
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://recensioneseguitedb:5432/recensioniseguite
@@ -73,8 +75,8 @@ services:
   api-gateway:
     build: ./api-gateway
     depends_on:
-      - "kafka"
       - "consul"
+      - "kafka"
     ports:
       - "8080:8080"
 
