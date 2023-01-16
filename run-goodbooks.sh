@@ -6,8 +6,13 @@ echo Running GOODBOOKS
 
 # Consul deve essere avviato separatamente 
 
-java -Xms64m -Xmx128m -jar recensioni/build/libs/recensioni.jar &
-java -Xms64m -Xmx128m -jar connessioni/build/libs/connessioni.jar &
-java -Xms64m -Xmx128m -jar recensioni-seguite/build/libs/recensioni-seguite.jar &
+echo Starting infrastructure...
 
-java -Xms64m -Xmx128m -jar api-gateway/build/libs/api-gateway.jar &
+docker compose up -d
+
+echo Creating Kafka topics for the restaurant service...
+
+KAFKA_DOCKER=$(docker ps | grep kafka | grep -v zookeeper | awk '{print $1}')
+
+winpty docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 --create --topic connessione-event-channel --replication-factor 1 --partitions 4
+winpty docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 --create --topic recensioni-service-event-channel --replication-factor 1 --partitions 4

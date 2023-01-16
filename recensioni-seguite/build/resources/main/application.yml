@@ -1,26 +1,11 @@
-# application.yml 
---- 
 spring:
-  kafka:
-    consumer:
-      properties:
-        spring:
-          json:
-            trusted:
-              packages=*:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/recensioniseguite
-    username: postgres
-    password: postgres
-
-
   application:
     name: recensioni-seguite
   cloud:
     consul:
-      host: localhost
+      host: consul
       port: 8500
-      discovery: 
+      discovery:
         instanceId: ${spring.application.name}-${spring.cloud.client.hostname}-${random.value}
         healthCheckPath: /actuator/health
         healthCheckInterval: 10s
@@ -28,31 +13,25 @@ spring:
         # dopo quanto tempo consul deve smettere di restituire servizi che non rispondono all'health check? 
         healthCheckCriticalTimeout: 45s
         # consul deve restituire solo servizi che passano l'health check (default=false) 
-        queryPassing: true 
-    loadbalancer: 
+        queryPassing: true
+    loadbalancer:
       ribbon.enabled: false
+  #KAFKA
+  kafka:
+    consumer:
+      bootstrap-servers: kafka:9092
+      group-id: ${spring.application.name}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties.spring.json.trusted.packages: '*'
+
 
 server:
   port: ${PORT:${SERVER_PORT:0}}
- #port: 8080
+#  port: 8080
 
 # fa il logging dei comandi sql eseguiti 
 #spring.jpa.show-sql: true
 # disable OSIV
 spring.jpa.open-in-view: false
-spring.jpa.hibernate.ddl-auto: create
-
-# KAFKA
-spring.kafka.bootstrap-servers : ${DOCKER_HOST_IP:localhost}:9092
-  
-  # KAFKA CONSUMER 
-spring.kafka.consumer.group-id: ${spring.application.name}
-spring.kafka.consumer.auto-offset-reset: earliest
-spring.kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-spring.kafka.consumer.value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-spring.kafka.consumer.properties.spring.json.trusted.packages: '*'
-
-  
-  # KAFKA PRODUCER 
-spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
-spring.kafka.producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
