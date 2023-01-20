@@ -9,6 +9,8 @@
         </processorPath>
         <module name="asw-goodbooks.connessioni.main" />
         <module name="asw-goodbooks.recensioni-seguite.main" />
+        <module name="asw-goodbooks.recensioni-api-event.main" />
+        <module name="asw-goodbooks.connessioni-api-event.main" />
         <module name="asw-goodbooks.recensioni.main" />
       </profile>
     </annotationProcessing>

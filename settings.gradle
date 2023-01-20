@@ -4,3 +4,7 @@ include 'recensioni-seguite'
 include 'api-gateway'
 
 rootProject.name = 'asw-goodbooks'
+include 'goodbooks-common-api-event'
+include 'recensioni-api-event'
+include 'connessioni-api-event'
+

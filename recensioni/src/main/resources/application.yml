@@ -1,11 +1,12 @@
 # application.yml
 --- 
-spring: 
+spring:
   application: 
     name: recensioni
   cloud:
     consul:
-      host: localhost
+      #host: localhost
+      host: consul
       port: 8500
       discovery: 
         instanceId: ${spring.application.name}-${spring.cloud.client.hostname}-${random.value}
@@ -17,28 +18,35 @@ spring:
         # consul deve restituire solo servizi che passano l'health check (default=false) 
         queryPassing: true 
     loadbalancer: 
-      ribbon.enabled: false 
-    # Database
+      ribbon.enabled: false
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/recensioni
+    platform: postgres
+    url: jdbc:postgresql://recensione_db:5432/recensioni
     username: postgres
     password: postgres
-  # JPA properties
-  jpa:
-    hibernate:
-      ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
-    show-sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false
-    generate-ddl: true
 
 server: 
-  port: ${PORT:${SERVER_PORT:0}}
-  #port: 8080
+  # port: ${PORT:${SERVER_PORT:0}}
+ port: 8080
 
 # fa il logging dei comandi sql eseguiti 
 #spring.jpa.show-sql: true
 # disable OSIV
 spring.jpa.open-in-view: false
+spring.jpa.hibernate.ddl-auto: create
+
+# KAFKA
+spring.kafka.bootstrap-servers : kafka:9092
+
+# KAFKA CONSUMER
+spring.kafka.consumer.group-id: ${spring.application.name}
+spring.kafka.consumer.auto-offset-reset: earliest
+spring.kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+spring.kafka.consumer.properties.spring.json.trusted.packages: '*'
+
+
+# KAFKA PRODUCER
+spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+

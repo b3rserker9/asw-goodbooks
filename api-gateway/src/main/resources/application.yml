@@ -2,10 +2,11 @@
 --- 
 spring: 
   application: 
-    name: apigateway
+    name: api-gateway
   cloud:
     consul:
-      host: localhost
+      #host: localhost
+      host: consul
       port: 8500
       discovery: 
         instanceId: ${spring.application.name}-${spring.cloud.client.hostname}-${random.value}

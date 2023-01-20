@@ -10,7 +10,7 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Recensione implements Comparable<Recensione> {
 
-	@Id 
+	@Id
 	@GeneratedValue
 	@EqualsAndHashCode.Include
 	private Long id; 
