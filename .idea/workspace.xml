@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a7f899ea-100b-4c9a-9ddd-ec57d68dc8e4" name="Changes" comment="Git ignore ecc" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="asw-goodbooks" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="asw-goodbooks" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="daniele" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JE0l5bDElzLDNWl7W6aQDq2EkR" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/danielepica/Documents/GitHub/asw-goodbooks/connessioni&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/connessioni" />
+      <recent name="$PROJECT_DIR$/recensioni" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="recensioni/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="recensioni/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.recensioni/Dockerfile" />
+        <item itemvalue="Docker.recensioni/Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a7f899ea-100b-4c9a-9ddd-ec57d68dc8e4" name="Changes" comment="" />
+      <created>1671628083171</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671628083171</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Modifica 1: Cambio database di recensioni e connessioni database postgresql in esecuzione su container docker differenti. File recensioni-db.sh e connessioni-db.sh per avviare i container, file stop-recensioni-db.sh e stop-connessioni-db.sh per rimuoverli">
+      <created>1672744410702</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672744410702</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Modifica punto Quando viene aggiunta una nuova recensione, il servizio recensioni deve notificare un evento RecensioneCreatedEvent (con tutti i dati della recensione), su un canale Kafka (da eseguire in un container Docker).">
+      <created>1672852566899</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672852566900</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Modifica punto 3 per quanto riguarda le connessioni. Capire come fare per i 2 tipi di connessioni che ci sono">
+      <created>1672856949391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672856949392</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Modifica punto 3 per quanto riguarda le connessioni completate">
+      <created>1672914081918</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672914081919</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Modifica punto 4,5,6">
+      <created>1672932556883</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672932556883</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Versione complessa, pare 1">
+      <created>1673188815377</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673188815377</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Versione complessa, parte 2">
+      <created>1673308979412</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673308979412</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Versione complessa parte finale">
+      <created>1673343774165</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673343774165</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Dockerizzazione ancora con problemi">
+      <created>1673706124206</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673706124206</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Dockerizzazione ancora con problemi">
+      <created>1673716140239</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673716140239</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Dockerizzazione finale con problemi risolti">
+      <created>1673868578432</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673868578434</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Pulizia codice">
+      <created>1674211594225</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211594225</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Pulizia codice">
+      <created>1674211745560</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211745560</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Git ignore ecc">
+      <created>1674211785892</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211785892</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Modifica 1: Cambio database di recensioni e connessioni database postgresql in esecuzione su container docker differenti. File recensioni-db.sh e connessioni-db.sh per avviare i container, file stop-recensioni-db.sh e stop-connessioni-db.sh per rimuoverli" />
+    <MESSAGE value="Modifica punto Quando viene aggiunta una nuova recensione, il servizio recensioni deve notificare un evento RecensioneCreatedEvent (con tutti i dati della recensione), su un canale Kafka (da eseguire in un container Docker)." />
+    <MESSAGE value="Modifica punto 3 per quanto riguarda le connessioni. Capire come fare per i 2 tipi di connessioni che ci sono" />
+    <MESSAGE value="Modifica punto 3 per quanto riguarda le connessioni completate" />
+    <MESSAGE value="Modifica punto 4,5,6" />
+    <MESSAGE value="Versione complessa, pare 1" />
+    <MESSAGE value="Versione complessa, parte 2" />
+    <MESSAGE value="Versione complessa parte finale" />
+    <MESSAGE value="Dockerizzazione ancora con problemi" />
+    <MESSAGE value="Dockerizzazione finale con problemi risolti" />
+    <MESSAGE value="Pulizia codice" />
+    <MESSAGE value="Git ignore ecc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Git ignore ecc" />
+  </component>
+</project>
