@@ -13,12 +13,6 @@ import java.util.stream.*;
 @Service 
 public class RecensioniSeguiteService {
 
-	@Autowired 
-	private ConnessioniClientPort connessioniClient;
-
-	@Autowired 
-	private RecensioniClientPort recensioniClient;
-
 	@Autowired
 	private RecensioneRepository recensioneRepository;
 

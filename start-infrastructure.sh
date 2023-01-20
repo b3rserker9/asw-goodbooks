@@ -14,20 +14,6 @@ docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 
 docker exec -it $KAFKA_DOCKER kafka-topics.sh --bootstrap-server localhost:9092 --create --topic connessione-event-channel --replication-factor 1 --partitions 4
 
 
-echo Starting connessioni db in docker container
-
-#docker run  --name connessioni -p 5433:5432 -e POSTGRES_PASSWORD=postgres -d postgres
-
-
-echo Starting recensioni db in docker container
-
-#docker run  --name recensioni -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
-
-
-echo Starting recensioni-seguite db in docker container
-
-#docker run  --name recensioni-seguite -p 5434:5432 -e POSTGRES_PASSWORD=postgres -d postgres
-
 
 
 
