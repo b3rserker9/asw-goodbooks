@@ -7,6 +7,11 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/recensioni-api-event/asw-goodbooks.recensioni-api-event.main.iml" filepath="$PROJECT_DIR$/.idea/modules/recensioni-api-event/asw-goodbooks.recensioni-api-event.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/recensioni-seguite/asw-goodbooks.recensioni-seguite.main.iml" filepath="$PROJECT_DIR$/.idea/modules/recensioni-seguite/asw-goodbooks.recensioni-seguite.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/recensioni/asw-goodbooks.recensioni.main.iml" filepath="$PROJECT_DIR$/.idea/modules/recensioni/asw-goodbooks.recensioni.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/connessioni-api-event/asw.goodbooks.asw-goodbooks.connessioni-api-event.main.iml" filepath="$PROJECT_DIR$/.idea/modules/connessioni-api-event/asw.goodbooks.asw-goodbooks.connessioni-api-event.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/connessioni/asw.goodbooks.asw-goodbooks.connessioni.main.iml" filepath="$PROJECT_DIR$/.idea/modules/connessioni/asw.goodbooks.asw-goodbooks.connessioni.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recensioni-api-event/asw.goodbooks.asw-goodbooks.recensioni-api-event.main.iml" filepath="$PROJECT_DIR$/.idea/modules/recensioni-api-event/asw.goodbooks.asw-goodbooks.recensioni-api-event.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recensioni-seguite/asw.goodbooks.asw-goodbooks.recensioni-seguite.main.iml" filepath="$PROJECT_DIR$/.idea/modules/recensioni-seguite/asw.goodbooks.asw-goodbooks.recensioni-seguite.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recensioni/asw.goodbooks.asw-goodbooks.recensioni.main.iml" filepath="$PROJECT_DIR$/.idea/modules/recensioni/asw.goodbooks.asw-goodbooks.recensioni.main.iml" />
     </modules>
   </component>
 </project>

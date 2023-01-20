@@ -2,11 +2,12 @@
 
 # Script per avviare Postgres e Kafka con Docker Compose (v2)
 
-echo Starting infrastructure...
+echo Starting docker compose
+docker compose build
+docker compose push
+docker compose up -d
 
-docker compose up -d 
-
-echo Creating Kafka topic for the recensioni service...
+echo Creating Kafka topics for the Goodbooks...
 
 KAFKA_DOCKER=$(docker ps | grep kafka | grep -v zookeeper | awk '{print $1}')
 
