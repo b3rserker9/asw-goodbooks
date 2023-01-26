@@ -3,8 +3,6 @@
 # Script per avviare Postgres e Kafka con Docker Compose (v2)
 
 echo Starting docker compose
-docker compose build
-docker compose push
 docker compose up -d
 
 echo Creating Kafka topics for the Goodbooks...
