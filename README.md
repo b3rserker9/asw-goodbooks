@@ -52,15 +52,32 @@ L'applicazione *GoodBooks* è composta dai seguenti microservizi:
   * espone il servizio *recensioni-seguite* sul path `/recensioni-seguite` - ad esempio, `GET /recensioni-seguite/recensioniseguite/{utente}`
 
 
+## Miglioramenti del sistema apportati
+Nei servizi recensioni e connessioni è stata usata una base di dati PostgreSQL al posto di HSQLDB (ciascuna eseguita in un container Docker separato).
+È stata modificata la logica del servizio recensioni‐seguiti, come descritto nel seguito:
+* Il servizio recensioni‐seguite deve sempre gestire una propria base di dati (separata dalle 
+precedenti, in un container Docker separato), con una tabella per le recensioni, una per le 
+connessioni utente‐autore e una per le connessioni utente‐recensore, ed anche una tabella 
+recensioniseguite che memorizza righe (utente, idRecensione, recensore, titoloLibro, 
+autoreLibro, testoRecensione).  
+* Ogni volta che il servizio recensioni‐seguite riceve un evento RecensioneCreatedEvent, deve 
+aggiornare di conseguenza la propria tabella delle recensioni e anche la tabella 
+recensioniseguite.  
+* Ogni volta che il servizio recensioni‐seguiti riceve un evento 
+ConnessioneConAutoreCreatedEvent oppure ConnessioneConRecensoreCreatedEvent, deve 
+aggiornare di conseguenza la relativa tabella delle connessioni e anche la tabella 
+recensioniseguite.  
+* Il servizio recensioni‐seguite può poi rispondere alle richieste GET 
+/recensioniseguite/{utente} accedendo solo alla propria tabella recensioniseguite.  
+
 ## Esecuzione 
 
 Per eseguire questo progetto: 
 
-* avviare *Consul* eseguendo lo script `start-consul.sh` 
+* per avviare l'applicazione *GoodBooks* e i diversi container, eseguire lo script `start-infrastructure.sh` 
 
-* per avviare l'applicazione *GoodBooks*, eseguire lo script `run-goodbooks.sh` 
-
-* per inizializzare le basi di dati con dei dati di esempio, eseguire gli script `do-init-recensioni.sh` e `do-init-connessioni.sh` 
+* per inizializzare le basi di dati con dei dati di esempio, eseguire gli script `do-init-recensioni.sh` e `do-init-connessioni.sh`
+  oppure per inizializzare ed eseguire diversi test per controllare il completo funzionamento, eseguire gli script 'do-start-all-test.sh' 
 
 
 Sono anche forniti alcuni script di esempio: 
@@ -87,7 +104,7 @@ Sono anche forniti alcuni script di esempio:
 
 Alla fine, l'applicazione può essere arrestata usando lo script `terminate-java-processes.sh` (**da usare con cautela!**). 
 
-Inoltre, *Consul* può essere arrestato con lo script `stop-consul.sh`. 
+Inoltre,  può essere arrestato con lo script `stop-infrastructure.sh`. 
 
 
 ## Descrizione delle attività da svolgere 
