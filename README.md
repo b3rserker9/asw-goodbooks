@@ -77,7 +77,7 @@ Per eseguire questo progetto:
 * per avviare l'applicazione *GoodBooks* e i diversi container, eseguire lo script `start-infrastructure.sh` 
 
 * per inizializzare le basi di dati con dei dati di esempio, eseguire gli script `do-init-recensioni.sh` e `do-init-connessioni.sh`
-  oppure per inizializzare ed eseguire diversi test per controllare il completo funzionamento, eseguire gli script 'do-start-all-test.sh' 
+  oppure per inizializzare ed eseguire diversi test per controllare il completo funzionamento, eseguire gli script `do-start-all-test.sh`
 
 
 Sono anche forniti alcuni script di esempio: 
